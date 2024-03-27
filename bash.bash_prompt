@@ -1,0 +1,55 @@
+#
+# /etc/bash.bash_prompt
+#
+
+function _return_value {
+  tput setaf 1 bold
+  printf "$ERRMSG"
+  tput sgr0
+}
+
+function _set_prompt {
+
+  # Set helper color variables
+  local blk='\[\033[00;30m\]' red='\[\033[00;31m\]' grn='\[\033[00;32m\]' \
+ 	org='\[\033[00;33m\]' blu='\[\033[00;34m\]' ylw='\[\033[00;35m\]' \
+  	cyn='\[\033[00;36m\]' wht='\[\033[00;37m\]'
+
+  # Set other helper variables
+  local rst='\[\033[00m\]' # Reset formatting
+  local bld='\[\033[01m\]' # Bold
+  local dim='\[\033[02m\]' # Dim
+  local ita='\[\033[03m\]' # Italic
+  local und='\[\033[04m\]' # Underline
+  local bln='\[\033[06m\]' # Blink
+  local ovr='\[\033[53m\]' # Overline
+
+  ######################
+  ### PROMPT_COMMAND ###
+  ######################
+
+  # Set commands that will launch right before prompt gets printed
+
+  PROMPT_COMMAND='RET=$?;'
+  PROMPT_COMMAND+='! test $RET = 0 && ERRMSG="$RET " || ERRMSG="";'
+  PROMPT_COMMAND+='_return_value'
+
+  ##############
+  ### PROMPT ###
+  ##############
+
+  PS1=""
+  [ "$(whoami)" == "root" ] \
+    && PS1+="${red}" \
+    || PS1+="${org}"
+  PS1+="${bld}\u@${dim}\h${rst} " # user@host
+  PS1+="in ${grn}${ita}\w${rst} " # in {dir}
+
+  (( SHLVL > 1 )) && PS1+="${blu}${bld}[LVL: $((SHLVL-1))]${rst} " # Subshell check
+  [ -n "${SSH_CLIENT+x}" ] && PS1+="${red}${bld}[remote]${rst} " # ssh check
+
+  PS1+="${bld}${blue}\\$>${rst} "
+}
+
+_set_prompt
+unset _set_prompt
