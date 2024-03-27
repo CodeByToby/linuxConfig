@@ -1,0 +1,382 @@
+# Configuration file for dircolors, a utility to help you set the
+# LS_COLORS environment variable used by GNU ls with the --color option.
+# Copyright (C) 1996-2023 Free Software Foundation, Inc.
+# Copying and distribution of this file, with or without modification,
+# are permitted provided the copyright notice and this notice are preserved.
+#
+# The keywords COLOR, OPTIONS, and EIGHTBIT (honored by the
+# slackware version of dircolors) are recognized but ignored.
+# Global config options can be specified before TERM or COLORTERM entries
+
+# ===================================================================
+# Terminal filters
+# ===================================================================
+
+# Below are TERM or COLORTERM entries, which can be glob patterns, which
+# restrict following config to systems with matching environment variables.
+COLORTERM ?*
+TERM Eterm
+TERM ansi
+TERM *color*
+TERM con[0-9]*x[0-9]*
+TERM cons25
+TERM console
+TERM cygwin
+TERM *direct*
+TERM dtterm
+TERM gnome
+TERM hurd
+TERM jfbterm
+TERM konsole
+TERM kterm
+TERM linux
+TERM linux-c
+TERM mlterm
+TERM putty
+TERM rxvt*
+TERM screen*
+TERM st
+TERM terminator
+TERM tmux*
+TERM vt100
+TERM xterm*
+
+# ===================================================================
+# Basic file attributes
+# ===================================================================
+
+# Below are the color init strings for the basic file types.
+
+# The default color codes use the capabilities of an 8 color terminal
+# with some additional attributes as per the following codes:
+# Attribute codes:          00=none 01=bold 02=dim 03=italic 04=underscore 05=blink 07=reverse 08=concealed 09=strike-through
+#			    21=double-underscore 53=overscore
+# Text color codes:         30=black 31=red 32=green 33=yellow 34=blue 35=magenta 36=cyan 37=white
+# Background color codes:   40=black 41=red 42=green 43=yellow 44=blue 45=magenta 46=cyan 47=white
+
+# 256 colors:
+# Text 256 color coding:        38;5;COLOR_NUMBER
+# Background 256 color coding:  48;5;COLOR_NUMBER
+
+NORMAL 00               # global default
+RESET 0                 # reset to "normal" color
+FILE 00                 # normal file
+DIR 01;34               # directory
+EXEC 01;04              # file with execute permission
+
+LINK target             # symbolic link. (If you set this to 'target' instead of a numerical value, the color is as for the file pointed to.)
+MULTIHARDLINK 04;36     # regular file with more than one link
+ORPHAN 41;01            # symlink to nonexistent file, or non-stat'able file ...
+MISSING 41              # ... and the files they point to
+
+FIFO 40;33              # pipe
+SOCK 01;35              # socket
+DOOR 01;35              # door
+BLK 40;33;01            # block device driver
+CHR 40;33;01            # character device driver
+
+SETUID 37;41                    # file that is setuid (u+s)
+SETGID 30;43                    # file that is setgid (g+s)
+CAPABILITY 00                   # file with capability (very expensive to lookup)
+
+STICKY_OTHER_WRITABLE 30;42     # dir that is sticky and other-writable (+t,o+w)
+OTHER_WRITABLE 34;42            # dir that is other-writable (o+w) and not sticky
+STICKY 37;44                    # dir with the sticky bit set (+t) and not other-writable
+
+# ===================================================================
+# File extension attributes
+# ===================================================================
+# List any file extensions like '.gz' or '.tar' that you would like ls
+# to color below. Put the suffix, a space, and the color init string.
+# (and any comments you want to add after a '#').
+# Suffixes are matched case insensitively, but if you define different
+# init strings for separate cases, those will be honored.
+
+### archives or compressed ###
+.tar 31
+.tgz 31
+.arc 31
+.taz 31
+.tlz 31
+.txz 31
+.tzo 31
+.t7z 31
+.zip 31
+.z 31
+.dz 31
+.gz 31
+.lrz 31
+.lz 31
+.lzo 31
+.xz 31
+.zst 31
+.tzst 31
+.bz 31
+.bz2 31
+.tbz 31
+.tbz2 31
+.tz 31
+.deb 31
+.rpm 31
+.jar 31
+.war 31
+.ear 31
+.sar 31
+.rar 31
+.alz 31
+.ace 31
+.cpio 31
+.7z 31
+.rz 31
+.cab 31
+.wim 31
+.swm 31
+.esd 31
+.pak 31
+.pk3 31
+
+### disk images ###
+.iso 01;31
+.cso 01;31
+.dmg 01;31
+.dvd 01;31
+.rom 01;31
+.dsk 01;31
+.img 01;31
+
+### images ###
+.bmp 36
+.cgm 36
+.dl 36
+.dvi 36
+.emf 36
+.eps 36
+.gif 36
+.jpeg 36
+.jpg 36
+.JPG 36
+.mng 36
+.pbm 36
+.pcx 36
+.pgm 36
+.png 36
+.PNG 36
+.ppm 36
+.pps 36
+.ppsx 36
+.ps 36
+.svg 36
+.svgz 36
+.tga 36
+.tif 36
+.tiff 36
+.face 36
+.xbm 36
+.xcf 36
+.xpm 36
+.xwd 36
+.yuv 36
+.ogv 36
+.ogx 36
+
+### videos ###
+.anx 02;36
+.asf 02;36
+.avi 02;36
+.axv 02;36
+.flc 02;36
+.fli 02;36
+.flv 02;36
+.gl 02;36
+.m2v 02;36
+.m4v 02;36
+.mkv 02;36
+.mov 02;36
+.mp4 02;36
+.mpeg 02;36
+.mpg 02;36
+.nuv 02;36
+.ogm 02;36
+.ogv 02;36
+.ogx 02;36
+.rm 02;36
+.rmvb 02;36
+.swf 02;36
+.vob 02;36
+.webm 02;36
+.wmv 02;36
+
+### audio ###
+.aac 32
+.au 32
+.flac 32
+.m4a 32
+.mid 32
+.midi 32
+.mka 32
+.mp3 32
+.mpc 32
+.ogg 32
+.wav 32
+.ra 32
+.oga 32
+.opus 32
+.spx 32
+.xspf 32
+
+### office document/ebook files ###
+.doc 02;35
+.docx 35
+.docm 02;35
+.dotx 35
+.dotm 02;35
+
+.ptt 02;35
+.pttx 35
+.pttm 02;35
+.potx 35
+.potm 02;35
+
+.xls 02;35
+.xlsx 35
+.xlsm 02;35
+.xltx 35
+.xltm 02;35
+
+.odp 35
+.odt 35
+.ods 35
+.odg 35
+
+.pdf 35
+.PDF 35
+.epub 35
+.djvu 35
+.azw 35
+.azw3 35
+
+### configuration ###
+.conf 01;40
+.cfg 01;40
+.cnf 01;40
+*config 01;40
+*profile 01;40
+*rc 01;40
+.yni 01;40
+.ini 01;40
+.csv 01;40
+.tsv 01;40
+
+### markup files ###
+.md 40
+.MD 40
+.markdown 40
+.html 40
+.css 40
+.xml 40
+.xslt 40        # XML style sheet
+.xsl 40
+.yaml 40
+.toml 40
+.tex 40         # LaTeX
+.json 40
+.atom 40
+.rst 40
+
+### osurce files ###
+.c 33
+.C 33
+.cc 33
+.cs 33
+.objc 33
+.cpp 33
+.cxx 33
+.h 33
+.hpp 33
+.go 33          # go
+.ru 33          # rust
+.lua 33
+.zig 33
+.sql 33
+.sqlite 33
+.js 33          # javascript
+.ts 33          # typescript
+.php 33
+.pl 33          # perl
+.PL 33
+.pm 33          # perl module
+.py 33          # python
+.rb 33          # ruby
+.r 33           # R
+.hs 33          # haskell
+.m 33           # matlab / obj-C
+.java 33
+
+### libraries and makefiles ###
+.so 02;33
+.la 02;33
+.a 02;33
+.lib 02;33
+.dll 02;33
+
+*Makefile 02;33
+*Makefile.Android 02;33
+*Makefile.Web 02;33
+*Rakefile 02;33
+*Dockerfile 02;33
+
+### special interest ###
+*README 01;05;07;40
+*README.md 01;05;07;40
+*README.txt 01;05;07;40
+
+*TODO 01;05;07;40
+*TODO.md 01;05;07;40
+*TODO.txt 01;05;07;40
+
+*CHANGELOG 01;07;40
+*CHANGELOG.md 01;07;40
+*CHANGELOG.txt 01;07;40
+
+*LICENSE 01;07;40
+*LICENSE.txt 01;07;40
+
+*CODEOWNERS 01;07;40
+*CODEOWNERS.txt 01;07;40
+
+# executables without +x flag
+.cmd 04
+.exe 04
+.com 04
+.btm 04
+.bat 04
+.app 04
+.reg 04
+.sh 04
+.csh 04
+
+# backup, log and other files
+.bak 02
+.old 02
+.orig 02
+.log 02
+.pyc 02
+.o 02
+.out 02
+.in 02
+.gitignore 02
+
+# partial files
+.crdownload 02;09
+.opdownload 02;09
+.part 02;09
+.partial 02;09
+.incomplete 02;09
+.swp 02;09
+.tmp 02;09
+.temp 02;09
+*~ 02;09
+*# 02;09
+
+# Subsequent TERM or COLORTERM entries, can be used to add / override
+# config specific to those matching environment variables.
