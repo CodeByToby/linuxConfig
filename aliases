@@ -1,0 +1,62 @@
+### shortenings ###
+alias s='sudo $( history -p !! )'
+alias o='xdg-open'
+alias c='clear'
+
+### vim to nvim ###
+alias vim='nvim'
+alias vi='nvim'
+
+# Add an "alert" alias for long running commands.  Use like so:
+#   sleep 10; alert
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+
+### flags ###
+alias grep='grep --color=auto'
+alias mkdir='mkdir -pv'
+
+alias mv='mv -i'
+alias rm='rm -i'
+alias cp='cp -i'
+
+### list ###
+alias l='ls'
+alias ls='ls --color=auto'
+alias ll='ls -oA --group-directories-first' # long list
+alias la='ls -A --group-directories-first' # list all
+alias lh='ls -d .*' # list just hidden files
+alias ld='ls -d */' # list directories
+
+### tmux ###
+alias tm='tmux new-session -s'
+alias tml='tmux list-sessions'
+alias tma='tmux attach-session -t'
+alias tmk='tmux kill-session -t'
+alias tmx='tmux kill-session -a'
+
+### pacman/yay/paru ###
+alias update='yes | pacman -Syu'
+
+alias spsyu='sudo pacman -Syu'
+alias sps='sudo pacman -S'
+alias spss='pacman -Ss'
+alias pss=spss
+alias sprsn='sudo pacman -Rsn'
+
+alias pacdiff='DIFFPROG=meld pacdiff'
+alias pacclean='sudo pacman -Rns $(pacman -Qtdq)'  # remove orphaned packages
+alias paccount='pacman -Qq | wc -l'  # counts installed packages
+alias parusua='yes | paru -Sua'  # update AUR packages (paru)
+alias yaysua='yes | yay -Sua'  # update AUR packages (yay)
+
+### youtube-dl ###
+alias yta='yt-dlp --extract-audio --format bestaudio --embed-thumbnail'
+alias ytv='yt-dlp --format bestaudio+bestvideo'
+
+### misc ###
+alias rmcurr='cd .. && rmdir $OLDPWD'
+alias path='echo -e ${PATH//:/\\n}'
+alias term-size='echo Rows=$(tput lines) Cols=$(tput cols)'
+alias pcd='cd $OLDPWD'
+alias audio='pactl info | grep "Server Name"'
+alias microcode='grep . /sys/devices/system/cpu/vulnerabilities/*'
